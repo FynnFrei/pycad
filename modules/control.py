@@ -7,7 +7,7 @@ from modules import genetic
 genetic.fundamental = 130.813  # Fundamental Frequency of marimba Bar 130.8 == C3
 marimba_length, marimba_width_avr, marimba_height = 440.4, 68.58, 28.96
 num_of_parameters = 4       # free (x,y) koordinates
-population_folder = 2       # folder is called 'population{population_folder}'
+population_folder = 4       # folder is called 'population{population_folder}'
 wood_type = 'Chestnut'
 result_file_name = f'result_file_{wood_type}_{population_folder}_generation'
 
@@ -19,8 +19,8 @@ def test_code():
     number_of_couples = 13      # each couple has 2 children
     number_of_parents_to_keep = 0
     keep_best_parent = True
-    mutation_probability = 0.04
-    mutate_range_x, mutate_range_y = 15, 1
+    mutation_probability = 0.3
+    mutate_range_x, mutate_range_y = 5, 0.5
     population_properties = [population_size, number_of_couples, number_of_parents_to_keep, keep_best_parent,
                              mutation_probability, mutate_range_x, mutate_range_y]
 
@@ -73,7 +73,7 @@ def test_code():
 
         # make list of FEM calculated Eigenmodes/ Frequencies of the current population and scores
         print(f'pre generation {generation}')
-        new_frequencies = genetic.calculate_frequencies_test(new_population)     # this is the big FEM analysis that takes all the time
+        new_frequencies = genetic.calculate_frequencies(new_population)     # this is the big FEM analysis that takes all the time
         print(f'post generation {generation}')
         new_scores = genetic.score_population(new_frequencies)
 
