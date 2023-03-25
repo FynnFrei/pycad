@@ -1,0 +1,117 @@
+# encoding: utf-8
+# 2022 R2
+SetScriptVersion(Version="22.2.192")
+fileType1 = GetFileType(Name="GeometryFileType")
+ImportFile(
+    FilePath=GetAbsoluteUserPathName("pycad/marimba_objects/Single_Bar0-Bar.step"),
+    FileType=fileType1)
+template1 = GetTemplate(
+    TemplateName="Modal",
+    Solver="ANSYS")
+system1 = GetSystem(Name="Geometry")
+system2 = template1.CreateSystem(
+    Position="Right",
+    RelativeTo=system1)
+geometry1 = system2.GetContainer(ComponentName="Geometry")
+geometry1.Edit()
+geometry1.Exit()
+geometryComponent1 = system1.GetComponent(Name="Geometry")
+geometryComponent1.Reset()
+Refresh()
+Refresh()
+Refresh()
+Refresh()
+Refresh()
+Refresh()
+system1.Delete()
+geometry1.SetFile(FilePath=GetAbsoluteUserPathName("pycad/marimba_objects/Single_Bar0-Bar.step"))
+engineeringData1 = system2.GetContainer(ComponentName="Engineering Data")
+material1 = engineeringData1.GetMaterial(Name="Structural Steel")
+material1.Delete()
+matl1 = engineeringData1.CreateMaterial(Name="Wood-Chestnut")
+EngData.EnableFilter(Enable=False)
+EngData.EnableFilter()
+matlProp1 = matl1.CreateProperty(
+    Name="Density",
+    Qualifiers={"Definition": "", "Behavior": ""})
+EngData.EnableFilter(Enable=False)
+matlProp2 = matl1.CreateProperty(
+    Name="Elasticity",
+    Behavior="Isotropic",
+    Qualifiers={"Definition": "", "Behavior": "Isotropic"})
+matlProp3 = matl1.CreateProperty(
+    Name="Tensile Ultimate Strength",
+    Qualifiers={"Definition": "", "Behavior": ""})
+matlProp4 = matl1.CreateProperty(
+    Name="Compressive Ultimate Strength",
+    Qualifiers={"Definition": "", "Behavior": ""})
+matlProp2.SetQualifier(
+    Qualifier="Derive from",
+    Value="Shear Modulus and Poisson's Ratio")
+matlProp1.SetData(
+    Index=-1,
+    Variables=["Density"],
+    Values=[["430 [kg m^-3]"]])
+matlProp2.SetData(
+    SheetName="Elasticity",
+    SheetQualifiers={"Definition": "", "Behavior": "Isotropic", "Derive from": "Shear Modulus and Poisson's Ratio"},
+    Index=-1,
+    Variables=["Temperature"],
+    Values=[["20 [C]"]])
+matlProp2.SetData(
+    Variables=["Poisson's Ratio"],
+    Values=[["0.32"]])
+matlProp2.SetVariableProperty(
+    VariableName="Shear Modulus",
+    Property="Unit",
+    Value="MPa")
+matlProp2.SetData(
+    Variables=["Shear Modulus"],
+    Values=[["7.8886090522101181E-31 [MPa]"]])
+matlProp2.SetData(
+    Variables=["Shear Modulus"],
+    Values=[["7.4 [MPa]"]])
+matlProp2.SetQualifier(
+    Qualifier="Derive from",
+    Value="Shear Modulus and Young's Modulus")
+matlProp2.SetVariableProperty(
+    VariableName="Young's Modulus",
+    Property="Unit",
+    Value="MPa")
+matlProp2.SetData(
+    Variables=["Young's Modulus"],
+    Values=[["19.535999999999998 [MPa]"]])
+matlProp2.SetData(
+    Variables=["Young's Modulus"],
+    Values=[["8500 [MPa]"]])
+matlProp2.SetQualifier(
+    Qualifier="Derive from",
+    Value="Young's Modulus and Poisson's Ratio")
+matlProp2.SetData(
+    Variables=["Poisson's Ratio"],
+    Values=[["0.32"]])
+matlProp3.SetVariableProperty(
+    VariableName="Tensile Ultimate Strength",
+    Property="Unit",
+    Value="MPa")
+matlProp3.SetData(
+    Index=-1,
+    Variables=["Tensile Ultimate Strength"],
+    Values=[["59 [MPa]"]])
+matlProp4.SetVariableProperty(
+    VariableName="Compressive Ultimate Strength",
+    Property="Unit",
+    Value="MPa")
+matlProp4.SetData(
+    Index=-1,
+    Variables=["Compressive Ultimate Strength"],
+    Values=[["4.3 [MPa]"]])
+matl1.SetColor(
+    Red=191,
+    Green=163,
+    Blue=137)
+modelComponent1 = system2.GetComponent(Name="Model")
+modelComponent1.Refresh()
+model1 = system2.GetContainer(ComponentName="Model")
+model1.Edit()
+Save(Overwrite=True)

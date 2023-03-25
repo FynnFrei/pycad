@@ -16,11 +16,11 @@ def test_code():
     # parameters
     population_size = 30
     number_of_generations = 2
-    number_of_couples = 13      # each couple has 2 children
+    number_of_couples = 14      # each couple has 2 children
     number_of_parents_to_keep = 0
     keep_best_parent = True
-    mutation_probability = 0.3
-    mutate_range_x, mutate_range_y = 5, 0.5
+    mutation_probability = 0.05
+    mutate_range_x, mutate_range_y = 5, 0.3
     population_properties = [population_size, number_of_couples, number_of_parents_to_keep, keep_best_parent,
                              mutation_probability, mutate_range_x, mutate_range_y]
 

@@ -1,0 +1,9 @@
+/COM,ANSYS RELEASE 2022 R2           BUILD 22.2      UP20220516       11:36:08
+
+ *** WARNING ***                         CP =       0.375   TIME= 11:36:09
+ Element shape checking is currently inactive.  Issue SHPP,ON or         
+ SHPP,WARN to reactivate, if desired.                                    
+
+ *** WARNING ***                         CP =       0.969   TIME= 11:36:10
+ Fewer modes than the requested number of modes ( 10 ) were computed.    
+ The range specified (FREQB= 10, FREQE= 10000) contains only 9 modes.    

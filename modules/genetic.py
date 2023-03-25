@@ -4,6 +4,7 @@ import random
 import numpy as np
 import re
 from modules import marimbaClass
+from datetime import datetime
 
 fundamental = 0  # Declare fundamental variable
 
@@ -162,6 +163,7 @@ def mutate(child, probability, mutate_range_x, mutate_range_y, marimba_height, n
 def write_file_generation(matrix, population_folder, wood_type, result_file_name, population_properties):
     # save all the results in a .txt file
     numbering = 0
+    date_and_time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     while os.path.exists(fr"marimba_objects/population_{wood_type}_{population_folder}/{result_file_name}{numbering}.txt"):
         numbering += 1
     with open(f'marimba_objects/population_{wood_type}_{population_folder}/{result_file_name}{numbering}.txt', 'w') as f:
@@ -174,7 +176,8 @@ def write_file_generation(matrix, population_folder, wood_type, result_file_name
                 f"\nNumber of kept parents: {population_properties[2]}"
                 f"\nBest parent kept: {population_properties[3]}"
                 f"\nMutation Probability: {population_properties[4]}"
-                f"\nMutation range (x, y): {population_properties[5]}, {population_properties[6]}")
+                f"\nMutation range (x, y): {population_properties[5]}, {population_properties[6]}"
+                f"\n\nWritten time: {date_and_time}")
 
         print(f'{result_file_name}{numbering} written!')
 
@@ -256,7 +259,7 @@ def build_best_bar(matrix_sorted):
 def build_single_bar(*, save_bar: bool = False):        # a function to test specific shapes of single bars
     # values = create_new_member(450, 30, 60, 10)
     # bar = marimbaClass.Marimba(*values)
-    bar = marimbaClass.Marimba(440.4, 68.58, 28.96, 68.98, 326.75, 19.25, 269.78, 21.62, 209.11, 21.95, 88.11, 24.09)
+    bar = marimbaClass.Marimba(440.4, 68.58, 28.96, 25.29, 296.03, 21.75, 222.34, 21.99, 191.75, 22.68, 86.07, 22.85)
     bar.marimba_sketch()
     bar.marimba_extrude()
     bar.marimba_analysis()
