@@ -93,8 +93,8 @@ def calculate_frequencies(population_value_list):
 def score_population(frequency_list):
     scores_list = []  # 1D List of all fitness values of all individuals in population
     for index, value in enumerate(frequency_list):
-        score = (abs(pow(frequency_list[index][0] - fundamental, 1.5)) * 10) + abs(
-            frequency_list[index][1] - (4 * fundamental)) + abs(frequency_list[index][2] - (10 * fundamental))
+        score = (abs(pow(frequency_list[index][0] - fundamental, 1.5)) * 10) + (abs(
+            frequency_list[index][1] - (4 * fundamental)) * 2) + abs(frequency_list[index][2] - (10 * fundamental))
         scores_list.append(score)       # TODO find the best formula (exponents and multiplicators)
 
     return scores_list
@@ -177,6 +177,9 @@ def write_file_generation(matrix, population_folder, wood_type, result_file_name
                 f"\nBest parent kept: {population_properties[3]}"
                 f"\nMutation Probability: {population_properties[4]}"
                 f"\nMutation range (x, y): {population_properties[5]}, {population_properties[6]}"
+                f"\nNumber of Parameters: {population_properties[7]}"
+                f"\nLength, Width, Height: {population_properties[8:11]}"
+                f"\nTarget Frequencies: {population_properties[11], population_properties[11]*4, population_properties[11]*10}"
                 f"\n\nWritten time: {date_and_time}")
 
         print(f'{result_file_name}{numbering} written!')
@@ -259,7 +262,7 @@ def build_best_bar(matrix_sorted):
 def build_single_bar(*, save_bar: bool = False):        # a function to test specific shapes of single bars
     # values = create_new_member(450, 30, 60, 10)
     # bar = marimbaClass.Marimba(*values)
-    bar = marimbaClass.Marimba(440.4, 68.58, 28.96, 25.29, 296.03, 21.75, 222.34, 21.99, 191.75, 22.68, 86.07, 22.85)
+    bar = marimbaClass.Marimba(440.0, 69.0, 29.0, 44.78, 343.71, 18.63, 284.82, 20.42, 168.2, 23.47, 126.8, 20.13)
     bar.marimba_sketch()
     bar.marimba_extrude()
     bar.marimba_analysis()

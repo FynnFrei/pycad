@@ -39,6 +39,7 @@ from femtools import femutils
 from femtools import membertools
 
 from PySide import QtCore  # there might be a special reason this is not guarded ?!?
+
 if FreeCAD.GuiUp:
     from PySide import QtGui
     import FemGui
@@ -856,7 +857,6 @@ class FemToolsCcx(QtCore.QRunnable, QtCore.QObject):
 
         if os.path.isfile(dat_result_file):
             mode_frequencies = importCcxDatResults.import_dat(dat_result_file, self.analysis)
-
             dat_file = open(dat_result_file, "r")
             dat_content = dat_file.read()
             dat_file.close()
