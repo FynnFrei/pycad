@@ -29,4 +29,14 @@
 [63.25, [440.0, 69.0, 29.0, 40.28, 328.14, 20.32, 251.45, 23.13, 181.76, 21.79, 93.77, 22.29], (131.1166, 526.2467, 1302.614)]
 [63.49, [440.0, 69.0, 29.0, 40.28, 339.32, 19.53, 252.76, 22.84, 191.79, 22.04, 89.99, 21.94], (131.1166, 526.2467, 1302.614)]
 
+Population size: 30
+Number of couples: 13
+Number of kept parents: 0
+Best parent kept: True
+Mutation Probability: 0.15
+Mutation range (x, y): 10, 0.6
+Number of Parameters: 4
+Length, Width, Height: [440, 69, 29]
+
+Written time: 27/03/2023 15:10:26
 info: Best of file 0-25

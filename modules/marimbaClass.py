@@ -165,22 +165,34 @@ class Marimba:
         FemGui.getActiveAnalysis().addObject(ObjectsFem.makeMaterialSolid(self.doc, 'MaterialSolid'))
         self.doc.Analysis.addObject(self.doc.ActiveObject)
         mat = self.doc.ActiveObject.Material
-        mat['Name'] = "White European Oak"        # TODO fill material properties
-        mat['CompressiveStrength'] = "7800 kPa"         # perpendicular to grain
-        mat['Density'] = "670 kg/m^3"                   # / specific gravity
+        mat['Name'] = "Wood-Chestnut"  # TODO fill material properties
+        mat['CompressiveStrength'] = "4300 kPa"  # perpendicular to grain
+        mat['Density'] = "430 kg/m^3"  # / specific gravity
         mat['FractureToughness'] = ""
-        mat['PoissonRatio'] = "0.37"
-        mat['ShearModulus'] = "11.6 MPa"
+        mat['PoissonRatio'] = "0.32"
+        mat['ShearModulus'] = "7.4 MPa"
         mat['UltimateStrain'] = ""
-        mat['UltimateTensileStrength'] = "97.1 MPa"     # max stress before breaking / modulus of rupture
-        # mat['YieldStrength'] = ""                       # Elastic limit -> Deformation (irrelevant?)
-        mat['YoungsModulus'] = "10600 MPa"              # Modulus of elasticity
+        mat['UltimateTensileStrength'] = "59.0 MPa"  # max stress before breaking / modulus of rupture
+        # mat['YieldStrength'] = ""                       # Elastic limit -> Deformation (irrelevant)
+        mat['YoungsModulus'] = "8500 MPa"  # Modulus of elasticity
         mat['Stiffness'] = ""
         self.doc.ActiveObject.Material = mat
         analysis_object.addObject(self.doc.ActiveObject)
 
-        # Chestnut-Wood:
-        '''mat['Name'] = "Wood-Chestnut"  # TODO fill material properties
+        # Wood Data:
+        '''mat['Name'] = "White European Oak"  # TODO fill material properties
+        mat['CompressiveStrength'] = "7800 kPa"  # perpendicular to grain
+        mat['Density'] = "670 kg/m^3"  # / specific gravity
+        mat['FractureToughness'] = ""
+        mat['PoissonRatio'] = "0.37"
+        mat['ShearModulus'] = "11.6 MPa"
+        mat['UltimateStrain'] = ""
+        mat['UltimateTensileStrength'] = "97.1 MPa"  # max stress before breaking / modulus of rupture
+        # mat['YieldStrength'] = ""                       # Elastic limit -> Deformation (irrelevant)
+        mat['YoungsModulus'] = "10600 MPa"  # Modulus of elasticity
+        mat['Stiffness'] = ""
+        
+        mat['Name'] = "Wood-Chestnut"  # TODO fill material properties
         mat['CompressiveStrength'] = "4300 kPa"  # perpendicular to grain
         mat['Density'] = "430 kg/m^3"  # / specific gravity
         mat['FractureToughness'] = ""
@@ -258,26 +270,18 @@ def marimba_femrun():
     print("Debug marimbaClass 2")'''
     from femtools import ccxtools
     fea = ccxtools.FemToolsCcx()
-    print("Debug marimbaClass 0")
     fea.update_objects()
-    print("Debug marimbaClass 1")
     fea.setup_working_dir()
-    print("Debug marimbaClass 2")
     fea.setup_ccx()
-    print("Debug marimbaClass 3")
     message = fea.check_prerequisites()
     if not message:
         fea.purge_results()
-        print("Debug marimbaClass 4")
         fea.write_inp_file()
-        print("Debug marimbaClass 5")
         # on error at inp file writing, the inp file path "" was returned (even if the file was written)
         # if we would write the inp file anyway, we need to again set it manually
         # fea.inp_file_name = '/tmp/FEMWB/FEMMeshGmsh.inp'
         fea.ccx_run()
-        print("Debug marimbaClass 6")
         fea.load_results()
-        print("Debug marimbaClass 7")
     else:
         print("Houston, we have a problem! {}\n".format(message))  # in Python console
 

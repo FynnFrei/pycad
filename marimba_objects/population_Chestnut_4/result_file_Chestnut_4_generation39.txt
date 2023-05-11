@@ -29,4 +29,10 @@
 [22.08, [440.4, 68.58, 28.96, 26.11, 298.89, 21.34, 230.23, 22.11, 192.2, 22.58, 88.65, 22.69], (130.3901, 522.2933, 1304.392)]
 [24.28, [440.4, 68.58, 28.96, 24.89, 305.45, 21.34, 228.42, 22.06, 192.2, 22.61, 88.52, 22.87], (130.3901, 522.2933, 1304.392)]
 
+Population size: 30
+Number of couples: 13
+Number of kept parents: 0
+Best parent kept: True
+Mutation Probability: 0.3
+Mutation range (x, y): 5, 0.2
 info: Frequencies are fake, this is best of Chestnut_4 file.

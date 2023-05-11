@@ -77,7 +77,6 @@ def calculate_frequencies(population_value_list):
         marimba_object = marimbaClass.Marimba(*population_value_list[i])
         marimba_object.marimba_sketch()
         marimba_object.marimba_extrude()
-        # marimba_object.box_part()
         marimba_object.marimba_analysis()
         marimbaClass.marimba_femrun()
         frequencies = marimba_object.read_eigenmodes()  # List of Eigenmodes of individual
@@ -94,7 +93,7 @@ def score_population(frequency_list):
     scores_list = []  # 1D List of all fitness values of all individuals in population
     for index, value in enumerate(frequency_list):
         score = (abs(pow(frequency_list[index][0] - fundamental, 1.5)) * 10) + (abs(
-            frequency_list[index][1] - (4 * fundamental)) * 2) + abs(frequency_list[index][2] - (10 * fundamental))
+            frequency_list[index][1] - (4 * fundamental)) * 2.5) + abs(frequency_list[index][2] - (10 * fundamental))
         scores_list.append(score)       # TODO find the best formula (exponents and multiplicators)
 
     return scores_list
@@ -112,12 +111,12 @@ def pick_mate(scores_list, parent_exception):
     for i in range(len(fitness)):  # Changes fitness score from linear to exponential
         fitness[i] = pow(fitness[i], 1.5)   # TODO find the best exponent
 
-    add_scores = copy.deepcopy(fitness)
+    add_fitness = copy.deepcopy(fitness)
 
-    for i in range(1, len(add_scores)):
-        add_scores[i] = fitness[i] + add_scores[i - 1]  # Add up all fitness values
+    for i in range(1, len(add_fitness)):
+        add_fitness[i] = fitness[i] + add_fitness[i - 1]  # Add up all fitness values
 
-    probs = [i / add_scores[-1] for i in add_scores]  # The higher the fitness, the higher the probability
+    probs = [i / add_fitness[-1] for i in add_fitness]  # The higher the fitness, the higher the probability
 
     rand = random.random()
 
@@ -262,13 +261,13 @@ def build_best_bar(matrix_sorted):
 def build_single_bar(*, save_bar: bool = False):        # a function to test specific shapes of single bars
     # values = create_new_member(450, 30, 60, 10)
     # bar = marimbaClass.Marimba(*values)
-    bar = marimbaClass.Marimba(440.0, 69.0, 29.0, 44.78, 343.71, 18.63, 284.82, 20.42, 168.2, 23.47, 126.8, 20.13)
+    bar = marimbaClass.Marimba(440.4, 68.58, 28.96, 23.58, 296.03, 20.95, 224.26, 22.21, 188.45, 22.89, 88.83, 22.5)
     bar.marimba_sketch()
     bar.marimba_extrude()
     bar.marimba_analysis()
-    #marimbaClass.marimba_femrun()
-    #frequencies = bar.read_eigenmodes()
-    #print(frequencies)
+    marimbaClass.marimba_femrun()
+    frequencies = bar.read_eigenmodes()
+    print(frequencies)
 
     if save_bar:
         bar.recompute()

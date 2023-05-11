@@ -29,4 +29,13 @@
 [32.83, [440.0, 69.0, 29.0, 29.93, 361.79, 18.95, 277.42, 22.65, 214.7, 22.13, 135.37, 19.65], (143.6609, 575.8661, 1380.605)]
 [32.93, [440.0, 69.0, 29.0, 47.88, 343.71, 18.63, 284.82, 20.42, 168.2, 23.47, 130.79, 20.1], (143.6609, 575.8661, 1380.605)]
 
+Population size: 30
+Number of couples: 14
+Number of kept parents: 0
+Best parent kept: True
+Mutation Probability: 0.08
+Mutation range (x, y): 5, 0.5
+Number of Parameters: 4
+Length, Width, Height: [440, 69, 29]
+Target Frequencies: (130.8, 523.2, 1308.0)
 info: best of file
