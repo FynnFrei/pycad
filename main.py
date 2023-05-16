@@ -6,9 +6,9 @@ from modules import control, genetic
 
 if __name__ == "__main__":
 
-    fem_full = True
-    best_of_file = False
-    build_single_bar = False
+    fem_full = True     # True if you want to run the whole control.py code (GA and FEM)
+    best_of_file = False    # True if you want to write a file containing the best results of one population
+    build_single_bar = False    # True if you want to build a single bar defined in genetic.py
     startTime = time.time()
 
     if fem_full:
@@ -23,4 +23,3 @@ if __name__ == "__main__":
     elapsed_time = endTime - startTime
     print(f'Program needed {elapsed_time} seconds.')
 
-    #os.execv(sys.executable, ['python'] + sys.argv)

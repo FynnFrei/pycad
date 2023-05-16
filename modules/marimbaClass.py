@@ -130,22 +130,6 @@ class Marimba:
         f.TaperAngle = 0.000000000000000
         f.TaperAngleRev = 0.000000000000000
 
-    def box_part(self):
-        self.doc.addObject("Part::Box", "Box1")
-        self.doc.addObject("Part::Box", "Box2")
-        box1 = self.doc.getObject('Box1')
-        box2 = self.doc.getObject('Box2')
-        box1.Height = 1
-        box1.Length = 10
-        box1.Width = 170
-        box1.Placement = App.Placement(App.Vector(0, -100, -1), App.Rotation(App.Vector(0, 0, 1), 0),
-                                       App.Vector(0, 0, 0))
-        box2.Height = 1
-        box2.Length = 10
-        box2.Width = 170
-        box2.Placement = App.Placement(App.Vector(self.marimba_length - 10, -100, -1),
-                                       App.Rotation(App.Vector(0, 0, 1), 0), App.Vector(0, 0, 0))
-
     def marimba_analysis(self):
         # make Analysis
         analysis_object = ObjectsFem.makeAnalysis(self.doc, 'Analysis')

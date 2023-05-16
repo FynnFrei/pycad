@@ -52,26 +52,20 @@ def make_first_population(population_size, marimba_length, marimba_width_avr, ma
 # Test simulation of the marimba build and FEM analysis, less calculation time
 def calculate_frequencies_test(population_value_list):
     frequency_list = []  # 2D List of all Eigenmodes of all individuals in population
-    #marimbaClass.open_freecad()
 
     for i in range(len(population_value_list)):
         marimba_object = marimbaClass.Marimba(*population_value_list[i])    # TODO FreeCADGui can only open 62 docs (see TODO in marimbaClass)
-        #marimba_object.marimba_sketch()
         marimbaClass.close_doc()
         frequencies = [random.randint(500, 1000), random.randint(1000, 1500), random.randint(1500, 2000),
                        random.randint(1800, 2300), random.randint(2300, 2600), random.randint(2600, 3000),
                        random.randint(3000, 3500), random.randint(3500, 4000), random.randint(4000, 4500),
                        random.randint(4500, 5500)]
         frequency_list.append(frequencies)
-
-    #marimbaClass.close_freecad()
     return frequency_list
 
 
 def calculate_frequencies(population_value_list):
     frequency_list = []
-
-    #marimbaClass.open_freecad()
 
     for i in range(len(population_value_list)):
         marimba_object = marimbaClass.Marimba(*population_value_list[i])
@@ -82,9 +76,6 @@ def calculate_frequencies(population_value_list):
         frequencies = marimba_object.read_eigenmodes()  # List of Eigenmodes of individual
         frequency_list.append(frequencies)
         marimbaClass.close_doc()
-
-    #marimbaClass.close_freecad()
-
     return frequency_list
 
 
