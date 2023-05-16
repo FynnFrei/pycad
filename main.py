@@ -6,9 +6,9 @@ from modules import control, genetic
 
 if __name__ == "__main__":
 
-    fem_full = False
+    fem_full = True
     best_of_file = False
-    build_single_bar = True
+    build_single_bar = False
     startTime = time.time()
 
     if fem_full:

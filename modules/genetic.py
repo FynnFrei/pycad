@@ -94,7 +94,7 @@ def score_population(frequency_list):
     for index, value in enumerate(frequency_list):
         score = (abs(pow(frequency_list[index][0] - fundamental, 1.5)) * 10) + (abs(
             frequency_list[index][1] - (4 * fundamental)) * 2.5) + abs(frequency_list[index][2] - (10 * fundamental))
-        scores_list.append(score)       # TODO find the best formula (exponents and multiplicators)
+        scores_list.append(score)       # TODO find the best formula (exponents and multiplication)
 
     return scores_list
 
